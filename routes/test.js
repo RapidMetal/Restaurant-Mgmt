@@ -6,4 +6,12 @@ router.get('/api/test', (req,res) => {
     res.send("Test successful!");
 })
 
+router.post('/api/test2', (req,res) => {
+    console.log("Post received");
+    console.log(req.body);
+    const resObject = { res: "Fuck JS!"};
+    res.set('Content-Type', 'application/json');
+    res.send(JSON.stringify(resObject));
+})
+
 module.exports = router;
