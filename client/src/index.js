@@ -2,18 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { Provider } from 'react-redux';
-
+import { BrowserRouter } from "react-router-dom";
 import './index.css';
 import App from './App';
 import store from './store.js';
 import * as serviceWorker from './serviceWorker';
 
-const ReactAppWrapper = () => {
+function ReactAppWrapper() {
     return (
         <React.Fragment>
             <CssBaseline />
             <Provider store={store}>
-                <App />
+                <BrowserRouter>
+                    <App />
+                </BrowserRouter>
             </Provider>
         </React.Fragment>
     );
