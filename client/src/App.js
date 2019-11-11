@@ -1,26 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import 'react-toastify/dist/ReactToastify.min.css'
+import { connect } from 'react-redux';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import { actionTest } from './reducer.js';
+import LoginPage from './comp/login.js';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function App(props) {
+  	return (
+		<React.Fragment>
+			<Router>
+				<Switch>
+					<Route exact path='/' component={LoginPage} />
+				</Switch>
+			</Router>
+			<ToastContainer position={toast.POSITION.BOTTOM_RIGHT} />
+		</React.Fragment>
+  	);
 }
 
-export default App;
+const mapStateToProps = state => {
+	return {
+		testState: state.testData,
+	}
+}
+
+const mapDispatchToProps = dispatch => {
+	return {
+		setData: data => dispatch(actionTest(data)),
+	}
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);
