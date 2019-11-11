@@ -8,7 +8,7 @@ router.post('/api/userlogin', async (req,res) => {
     const userName = req.body.userName;
     const userPass = req.body.userPass;
     var responseObject = {};
-    res.set('Content-Type', 'application/json');
+    res.header('Content-Type', 'application/json');
     var dbcheck=0;
     // Query Users in DB, check if userName exists and userPass matches
     const searchresponce=await userModel.find({ username:userName});
@@ -45,9 +45,9 @@ router.post('/api/userlogin', async (req,res) => {
                 token: sessionToken
             }
             res.send(JSON.stringify(responseObject));
-            }
             console.log("User logged in");
         }
+    }
 })
 
 module.exports = router;

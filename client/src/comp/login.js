@@ -137,6 +137,7 @@ function LoginPage(props) {
 		}
 		fetch('http://localhost:8125/api/userLogin', {
 			method: 'post',
+			mode: 'cors',
 			headers: {
 				'Content-Type': 'application/json'
 			},
@@ -186,6 +187,7 @@ function LoginPage(props) {
 		}
 		fetch('http://localhost:8125/api/userRegister', {
 			method: 'post',
+			mode: 'cors',
 			headers: {
 				'Content-Type': 'application/json'
 			},
@@ -196,7 +198,7 @@ function LoginPage(props) {
 			if (res.status === 'ERROR_USER_NAME_TAKEN') {
 				toast('Error: Username is already taken. Please pick another one.');
 			}
-			else if (res.status === 'REGISTRATION_SUCCESSFUL') {
+			else if (res.status === 'REGISTRATION_SUCCESS') {
 				toast('Registration successful! Please log in with your new account.');
 				setDialogOpenStatus(false);
 			}

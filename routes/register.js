@@ -9,7 +9,7 @@ router.post('/api/userRegister',async(req,res)=>{
     const Name=req.body.name;
     const type=req.body.admin;
     var responseObject = {};
-    res.set('Content-Type', 'application/json');
+    res.header('Content-Type', 'application/json');
     var dbcheck=0;
     // Query Users in DB, check if userName exists 
     var user=new userModel;
