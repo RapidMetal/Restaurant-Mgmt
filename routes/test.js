@@ -1,9 +1,23 @@
 const express = require('express');
 const router = express.Router();
+const userModel = require('../db').userModel;
 
-router.get('/api/test', (req,res) => {
-    console.log("Test request received.");
-    res.send("Test successful!");
+router.get('/api/test', async (req,res) => {
+    try {
+        console.log("Test request received.");
+        var newUser = userModel({
+            name: "Hello there",
+            username: "a3",
+            password: "b",
+            admin: false
+        });
+        const saveResult = await newUser.save();
+        console.log(saveResult);
+        res.send("Test successful!");
+    } catch (err) {
+        throw err;
+    }
+    
 })
 
 router.post('/api/test2', (req,res) => {
