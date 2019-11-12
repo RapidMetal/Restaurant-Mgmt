@@ -14,8 +14,7 @@ function App(props) {
 		<React.Fragment>
 			<Router>
 				<Switch>
-					{/* <Route path='/' component={LoginPage} /> */}
-					<Route exact path='/' component={EmployeePage} />
+					<Route exact path='/' component={LoginPage} />
 					<Route path='/emp' component={EmployeePage} />
 					<Route path='/manager' component={ManagerPage} />
 				</Switch>
