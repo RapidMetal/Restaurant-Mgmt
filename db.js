@@ -8,7 +8,6 @@ var userSchema = new mongoose.Schema({
     username: { type: String, required: true ,unique : true },
     password: { type: String, required: true },
     admin: Boolean,
-    token: String,
 });
 
 //Make model
@@ -39,6 +38,7 @@ var orderSchema = new mongoose.Schema({
     empId: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     date: Date,
     list: [{ type : mongoose.Schema.Types.ObjectId, ref: 'List'}],
+    totalPrice: Number,
     tip: Number,
     rating: Number
 });
@@ -49,6 +49,7 @@ var orderModel = mongoose.model('Order', orderSchema);
 //Employee Schema
 var empSchema = new mongoose.Schema({
     user: {type : mongoose.Schema.Types.ObjectId, ref: 'User' },
+    name: String,
     tips: Number,
     avgRating: Number,
     orderCount: Number
