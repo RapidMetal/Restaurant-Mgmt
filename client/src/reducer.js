@@ -5,7 +5,6 @@ const initialState = {
     user: {
         name: "D_Employee",
         id: "D_id",
-        token: "D_token",
         isManager: false,
     },
     employeeDetails: {
@@ -13,7 +12,22 @@ const initialState = {
         rating: 4,
         orderCount: 1,
     },
-    menu: [],
+    menu: [{
+        _id: '1',
+        name: 'item1',
+        type: 'entree',
+        price: 200
+    }, {
+        _id: '2',
+        name: 'item2',
+        type: 'main',
+        price: 500
+    }, {
+        _id: '3',
+        name: 'item3',
+        type: 'dessert',
+        price: 400
+    }],
     employees: [{
         name: 'Server A',
         orderCount: 5,
@@ -50,7 +64,6 @@ export const actionLogin = (loginDetails) => {
         type: 'ACTION_LOGIN',
         empName: loginDetails.empName,
         userId: loginDetails.userId,
-        userToken: loginDetails.userToken,
         isManager: loginDetails.isManager,
     }
 }
@@ -107,7 +120,6 @@ const rootReducer = (state = initialState,action) => {
             console.log('User login, manager = ' + action.isManager);
             var newUserLogin = {
                 name: action.empName,
-                id: action.userId,
                 token: action.userToken,
                 isManager: action.isManager,
             };

@@ -132,7 +132,7 @@ function ManagerPage(props) {
                             </div>
                             <Divider />
                             { props.employees.map((emp, index) => (
-                                <EmployeePerf name={emp.name} orderCount={emp.orderCount} tips={emp.tips} rating={emp.rating} index={index} />
+                                <EmployeePerf name={emp.name} orderCount={emp.orderCount} tips={emp.tips} rating={emp.rating} key={index} />
                             ))}
                         </div>
                     </Paper>
@@ -144,11 +144,11 @@ function ManagerPage(props) {
                             <Typography component='h6' variant='h6' style={{ color: '#fff' }}> Restaurant Performance </Typography>
                         </div>
                         <div className={classes.rightColDetails}>
-                            <Typography component='p' variant='p' className={classes.rightColField}> <pre style={{ fontFamily: 'inherit' }}>Name:                  Wayside Restaurant Inc.</pre> </Typography>
-                            <Typography component='p' variant='p' className={classes.rightColField}> <pre style={{ fontFamily: 'inherit' }}>No. of Orders:     {props.restaurantDetails.orderCount}</pre> </Typography>
-                            <Typography component='p' variant='p' className={classes.rightColField}> <pre style={{ fontFamily: 'inherit' }}>Total Revenue:   Rs. {props.restaurantDetails.revenue}</pre> </Typography>
-                            <Typography component='p' variant='p' className={classes.rightColField}> <pre style={{ fontFamily: 'inherit' }}>Tips Received:    Rs. {props.restaurantDetails.tips}</pre> </Typography>
-                            <Typography component='p' variant='p' className={classes.rightColField}> <pre style={{ fontFamily: 'inherit' }}>Average rating:   {props.restaurantDetails.rating}/5 stars</pre> </Typography>
+                            <Typography className={classes.rightColField}> <pre style={{ fontFamily: 'inherit' }}>Name:                  Wayside Restaurant Inc.</pre> </Typography>
+                            <Typography className={classes.rightColField}> <pre style={{ fontFamily: 'inherit' }}>No. of Orders:     {props.restaurantDetails.orderCount}</pre> </Typography>
+                            <Typography className={classes.rightColField}> <pre style={{ fontFamily: 'inherit' }}>Total Revenue:   Rs. {props.restaurantDetails.revenue}</pre> </Typography>
+                            <Typography className={classes.rightColField}> <pre style={{ fontFamily: 'inherit' }}>Tips Received:    Rs. {props.restaurantDetails.tips}</pre> </Typography>
+                            <Typography className={classes.rightColField}> <pre style={{ fontFamily: 'inherit' }}>Average rating:   {props.restaurantDetails.rating}/5 stars</pre> </Typography>
                         </div>
                     </Paper>
                 </Grid>

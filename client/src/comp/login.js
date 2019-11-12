@@ -139,7 +139,7 @@ function LoginPage(props) {
 			userPass: passField
 		}
 		//props.history.push('/emp');
-		fetch('http://localhost:8125/api/userLogin', {
+		fetch('http://localhost:8125/api/login', {
 			method: 'post',
 			mode: 'cors',
 			headers: {
@@ -189,7 +189,7 @@ function LoginPage(props) {
 			userPass: passField,
 			admin: isManager
 		}
-		fetch('http://localhost:8125/api/userRegister', {
+		fetch('http://localhost:8125/api/register', {
 			method: 'post',
 			mode: 'cors',
 			headers: {
