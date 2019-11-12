@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { makeStyles, FormGroup } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import { connect } from "react-redux";
-import { toast } from "react-toastify";
+import { toast } from "react-toastify";	
+import { withRouter } from "react-router-dom";
 
 import { actionTest, actionLogin } from "../reducer.js";
 
@@ -21,6 +22,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogActions from '@material-ui/core/DialogActions';
+import FormGroup from '@material-ui/core/FormGroup'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -135,6 +137,7 @@ function LoginPage(props) {
 			userName: usernameField,
 			userPass: passField
 		}
+		//props.history.push('/emp');
 		fetch('http://localhost:8125/api/userLogin', {
 			method: 'post',
 			mode: 'cors',
@@ -331,4 +334,4 @@ const mapDispatchToProps = dispatch => {
 	}
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(LoginPage);
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter(LoginPage));
