@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { toast } from "react-toastify";	
 import { withRouter } from "react-router-dom";
 
-import { actionTest, actionLogin } from "../reducer.js";
+import { actionTest, actionLogin, actionSetRestaurantDetails, actionSetEmployeeSummary, actionSetEmployeeDetails, actionSetMenu } from "../reducer.js";
 
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -156,15 +156,43 @@ function LoginPage(props) {
 				toast('Error: Wrong password. Please try again.');
 			}
 			else if (res.status === 'LOGIN_SUCCESSFUL') {
-				const toastId = toast("Login successful! Please wait...");
 				const userDetails = {
 					empName: res.name,
-					userId: res.userId,
-					userToken: res.sessionToken,
-					isManager: res.admin,
+					userId: res.token,
+					isManager: res.isManager,
 				}
 				props.actionLogin(userDetails);
-				// Handle extra details obtained on login based on if manager or not
+	
+				// If manager
+				if (res.isManager) {
+					// res.empList and res.restaurantDetails
+					props.actionSetRestaurantDetails(res.restaurantDetails);
+					var newEmployeeList = [];
+					res.empDetails.forEach(emp => {
+						newEmployeeList.push({
+							name: emp.name,
+							orderCount: emp.orderCount,
+							tips: emp.tips,
+							rating: emp.avgRating
+						});
+					});
+					props.actionSetEmployeeSummary(newEmployeeList);
+					toast('Welcome, ' + res.name + '!');
+					props.history.push('/manager');
+				}
+				// If employee
+				else {
+					// res.menu and res.emp
+					var newEmployeeDetails = {
+						tips: res.emp.tips,
+						rating: res.emp.rating,
+						orderCount: res.emp.orderCount
+					};
+					props.actionSetEmployeeDetails(newEmployeeDetails);
+					props.actionSetMenu(res.menu);
+					toast('Welcome, '+ res.name + '!');
+					props.history.push('/emp');
+				}
 			}
 			else {
 				toast('Unknown error.');
@@ -331,7 +359,11 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
 	return {
 		setData: data => dispatch(actionTest(data)),
-		actionLogin: data => dispatch(actionLogin(data))
+		actionLogin: data => dispatch(actionLogin(data)),
+		actionSetRestaurantDetails: data => dispatch(actionSetRestaurantDetails(data)),
+		actionSetEmployeeSummary: data => dispatch(actionSetEmployeeSummary(data)),
+		actionSetEmployeeDetails: data => dispatch(actionSetEmployeeDetails(data)),
+		actionSetMenu: data => dispatch(actionSetMenu(data))
 	}
 }
 
