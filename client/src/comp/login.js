@@ -23,13 +23,14 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogActions from '@material-ui/core/DialogActions';
 import FormGroup from '@material-ui/core/FormGroup'
+import LoginBackgroundImage from '../img/loginbackground.jpg';
 
 const useStyles = makeStyles(theme => ({
     root: {
         height: '100vh',
     },
     image: {
-        backgroundImage: 'url(https://www.theriverside.co.uk/images/Inside-Restaurant.jpg)',
+        backgroundImage: 'url(' + LoginBackgroundImage + ')',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
