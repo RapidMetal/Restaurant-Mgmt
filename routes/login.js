@@ -63,7 +63,8 @@ router.post('/api/login', async (req,res) => {
                     status: 'LOGIN_SUCCESSFUL',
                     msg: 'login request response from server',
                     token: searchResponse[0]._id,
-                    isManager: searchResponse[0].admin
+                    isManager: searchResponse[0].admin,
+                    name: this.searchResponse[0].name
                 }
                 
 
