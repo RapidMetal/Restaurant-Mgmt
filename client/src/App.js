@@ -6,13 +6,18 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import { actionTest } from './reducer.js';
 import LoginPage from './comp/login.js';
+import EmployeePage from './comp/emp.js';
+import ManagerPage from './comp/manager.js';
 
 function App(props) {
   	return (
 		<React.Fragment>
 			<Router>
 				<Switch>
-					<Route exact path='/' component={LoginPage} />
+					{/* <Route path='/' component={LoginPage} /> */}
+					<Route exact path='/' component={EmployeePage} />
+					<Route path='/emp' component={EmployeePage} />
+					<Route path='/manager' component={ManagerPage} />
 				</Switch>
 			</Router>
 			<ToastContainer position={toast.POSITION.BOTTOM_RIGHT} />
