@@ -64,7 +64,7 @@ router.post('/api/login', async (req,res) => {
                     msg: 'login request response from server',
                     token: searchResponse[0]._id,
                     isManager: searchResponse[0].admin,
-                    name: this.searchResponse[0].name
+                    name: searchResponse[0].name
                 }
                 
 
@@ -156,6 +156,7 @@ async function returnManDetails(){
         //@Pavan - Coz Fuck Mongo, that's why
         const revTotalResponse = await orderModel.aggregate([ { $group: { _id: null, "totalRevenue": { $sum: "$totalPrice" }, "totalTips": { $sum: "$tip" }
     , "ratingTotal": { $sum: "rating" } } } ]); 
+        console.log(revTotalResponse);
         var _revTotal = revTotalResponse[0].totalRevenue;
         var _tipTotal = revTotalResponse[0].totalTips;
         var ratingTotal = revTotalResponse[0].ratingTotal;

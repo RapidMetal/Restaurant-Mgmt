@@ -224,11 +224,15 @@ function EmployeePage(props) {
 
     const placeOrder = () => {
         //Check if order is correct
-        const isFormFilled = itemList.forEach((item) => {
-            if (item._id === '') return false;
-        })
+        var isFormFilled = true;
+        for (const key in itemList) {
+            if (itemList[key]._id === '')
+                isFormFilled = false;
+        }
         if (!isFormFilled || itemList.length === 0) {
             toast("Please fill the form completely first.");
+            console.log(!isFormFilled);
+            console.log(itemList.length === 0)
             return;
         }
 
@@ -261,6 +265,8 @@ function EmployeePage(props) {
                 };
                 props.actionUpdateEmployeeDetails(newEmployeeDetails);
             }
+        }).catch(err => {
+            throw err;
         })
     }
 

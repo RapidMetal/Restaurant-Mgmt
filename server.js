@@ -15,3 +15,4 @@ app.listen(PORT, () => {
 app.use('/',require('./routes/test.js'));
 app.use('/',require('./routes/register.js'));
 app.use('/',require('./routes/login.js'));
+app.use('/',require('./routes/order.js'));
