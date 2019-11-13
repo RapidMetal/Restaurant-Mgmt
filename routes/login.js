@@ -155,7 +155,7 @@ async function returnManDetails(){
         console.log(_orderTotal);
         //@Pavan - Coz Fuck Mongo, that's why
         const revTotalResponse = await orderModel.aggregate([ { $group: { _id: null, "totalRevenue": { $sum: "$totalPrice" }, "totalTips": { $sum: "$tip" }
-    , "ratingTotal": { $sum: "rating" } } } ]); 
+    , "ratingTotal": { $sum: "$rating" } } } ]); 
         console.log(revTotalResponse);
         var _revTotal = revTotalResponse[0].totalRevenue;
         var _tipTotal = revTotalResponse[0].totalTips;
