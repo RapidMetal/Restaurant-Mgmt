@@ -168,7 +168,7 @@ function LoginPage(props) {
 					// res.empList and res.restaurantDetails
 					props.actionSetRestaurantDetails(res.restaurantDetails);
 					var newEmployeeList = [];
-					res.empDetails.forEach(emp => {
+					res.empList.forEach(emp => {
 						newEmployeeList.push({
 							name: emp.name,
 							orderCount: emp.orderCount,

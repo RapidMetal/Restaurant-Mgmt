@@ -205,8 +205,13 @@ function EmployeePage(props) {
 
     //Update total Price on DOM re-render
     useEffect(() => {
-        setTotalPrice(itemList.reduce((acc,item) => acc + item.price * item.quantity,0));
-    }, [itemList]);
+        var newItemPrice = 0
+        for (const key in itemList) {
+            newItemPrice = newItemPrice + itemList[key].price * itemList[key].quantity;
+        }
+        setTotalPrice(newItemPrice);
+        //eslint-disable-next-line
+    }, []);
 
     const performLogout = () => {
         props.actionLogout();

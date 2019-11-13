@@ -120,7 +120,7 @@ const rootReducer = (state = initialState,action) => {
             console.log('User login, manager = ' + action.isManager);
             var newUserLogin = {
                 name: action.empName,
-                token: action.userToken,
+                id: action.userId,
                 isManager: action.isManager,
             };
             return {
