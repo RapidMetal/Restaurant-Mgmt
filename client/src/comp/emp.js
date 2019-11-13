@@ -367,7 +367,7 @@ function EmployeePage(props) {
                             <Typography className={classes.rightColField}><pre style={{ fontFamily: 'inherit' }}> Name:                   {props.empName} </pre></Typography>
                             <Typography className={classes.rightColField}><pre style={{ fontFamily: 'inherit' }}> No. of Orders:      {props.empDetails.orderCount} </pre></Typography>
                             <Typography className={classes.rightColField}><pre style={{ fontFamily: 'inherit' }}> Tips Received:     Rs. {props.empDetails.tips} </pre></Typography>
-                            <Typography className={classes.rightColField}><pre style={{ fontFamily: 'inherit' }}> Average rating:    {props.empDetails.rating} stars </pre></Typography>
+                            <Typography className={classes.rightColField}><pre style={{ fontFamily: 'inherit' }}> Average rating:    {props.empDetails.rating.toPrecision(3)} stars </pre></Typography>
                         </div>
                     </Paper>
                 </Grid>

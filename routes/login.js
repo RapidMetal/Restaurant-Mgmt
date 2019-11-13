@@ -31,7 +31,7 @@ router.post('/api/login', async (req,res) => {
         const searchResponse = await userModel.find({ username:userName});
         dbcheck = searchResponse.length;
     
-        if(dbcheck === 0){
+        if(dbcheck === false){
             // If user not found
             responseObject = {
                 status: 'ERROR_USER_NOT_FOUND',
@@ -40,13 +40,13 @@ router.post('/api/login', async (req,res) => {
             res.send(JSON.stringify(responseObject));
         }
         else {
-            dbcheck = 0;
+            dbcheck = false;
             console.log("User found");
     
             if(searchResponse[0].password === userPass)
                 dbcheck = 1;
     
-            if(dbcheck === 0){
+            if(dbcheck === false){
     
                 // If password mismatch
                 responseObject = {

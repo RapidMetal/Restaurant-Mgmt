@@ -4,7 +4,7 @@ import rootReducer from './reducer.js';
 
 const store = createStore(rootReducer, compose(
     applyMiddleware(thunk),
-    window.devToolsExtension && window.devToolsExtension()
+    //window.devToolsExtension && window.devToolsExtension()
 ))
 
 export default store;
