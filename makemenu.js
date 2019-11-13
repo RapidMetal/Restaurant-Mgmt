@@ -1,8 +1,10 @@
-//@KK - FIX YOUR FUCKING TYPING SCHEME!!!!
-
-
+const userModel = require('./db').userModel;
 const itemModel = require('./db').itemModel;
+const listModel = require('./db').listModel;
+const orderModel = require('./db').orderModel;
+const empModel = require('./db').empModel;
 
+//#region Items
 var item1 = new itemModel({
     name: "Sherry Glazed Mushrooms",
     price: 250,
@@ -73,4 +75,63 @@ var item10 = new itemModel({
     type: "Dessert"
 });
 item10.save().then(() => console.log('10 saved.'));
+//#endregion
 
+//#region Users and Employees
+var user1 = new userModel({
+    name: "Pavan",
+    username: "DeadWolf",
+    password: "106116027",
+    admin: true
+});
+
+var user2 = new userModel({
+    name: "Rutvik",
+    username: "Slow",
+    password: "106116075",
+    admin: false
+});
+
+var user3 = new userModel({
+    name: "KK",
+    username: "KK",
+    password: "106116044",
+    admin: false
+});
+
+var emp1 = new empModel({
+    user: user2._id,
+    name: "Rutvik",
+    tips: 69,
+    avgRating: 4.2,
+    orderCount: 2
+});
+
+var emp2 = new empModel({
+    user: user3._id,
+    name: "KK",
+    tips: 20,
+    avgRating: 4,
+    orderCount: 1
+});
+//#endregion
+
+//#region Lists and Orders
+var list1 = new listModel({
+    item: item2._id,
+    quantity: 1,
+    price: 350
+});
+
+var list2 = new listModel({
+    item: item4._id,
+    quantity: 1,
+    price: 400
+});
+
+var order1 = new orderModel({
+    empId: user2._id,
+    
+})
+
+//#endregion
