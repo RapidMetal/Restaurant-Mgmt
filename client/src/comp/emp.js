@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { toast } from "react-toastify";
-import { makeStyles, AppBar, Toolbar, IconButton, Typography, Grid, Paper, Divider, Select, MenuItem, Button } from '@material-ui/core';
+import { makeStyles, TextField, AppBar, Toolbar, IconButton, Typography, Grid, Paper, Divider, Select, MenuItem, Button } from '@material-ui/core';
 import MenuButton from "@material-ui/icons/Menu";
 import LogoutButton from '@material-ui/icons/Input';
 import OrangeBackgroundImage from '../img/background.jpg';
@@ -111,7 +111,12 @@ const useStyles = makeStyles(theme => ({
     totalPriceText: {
         marginLeft: 'auto',
         marginRight: theme.spacing(2),
-    }
+    },
+    tipField: {
+        marginLeft: theme.spacing(2),
+        marginTop: theme.spacing(0),
+        maxWidth: '10%'
+    },
 }));
 
 function FormItem(props) {
@@ -210,12 +215,13 @@ function EmployeePage(props) {
     const [itemList, updateItemList] = useState([]);
     const [refreshState, forceRefresh] = useState(false);
     const [rating, setRating] = useState(5);
+    const [orderTip, setOrderTip] = useState(20);
     const ratingArray = [1,2,3,4,5];
     const [totalPrice, setTotalPrice] = useState(0);
 
     //Update total Price on DOM re-render
     useEffect(() => {
-        var newItemPrice = 0
+        var newItemPrice = Number.parseInt(orderTip);
         for (const key in itemList) {
             newItemPrice = newItemPrice + itemList[key].price * itemList[key].quantity;
         }
@@ -254,7 +260,9 @@ function EmployeePage(props) {
         const objectToSend = {
             msg: 'Order placement request from server.',
             token: props.empId,
-            order: itemList
+            order: itemList,
+            rating: rating,
+            tip: Number.parseInt(orderTip)
         };
 
         fetch('http://localhost:8125/api/placeOrder', {
@@ -334,8 +342,17 @@ function EmployeePage(props) {
                                             <MenuItem key={index} value={qty}> {qty} </MenuItem>
                                         )) }
                                 </Select>
+                                <TextField 
+                                    variant='standard'
+                                    margin='normal'
+                                    id='tip-field'
+                                    value={orderTip}
+                                    onChange={e => setOrderTip(e.target.value)}
+                                    label='Tip (in Rs.)'
+                                    className={classes.tipField}
+                                    color='secondary'
+                                    type='number' />
                                 <Typography className={classes.totalPriceText}> Total Price = Rs. {totalPrice} </Typography>
-
                             </div>
                         </div>
                     </Paper>
