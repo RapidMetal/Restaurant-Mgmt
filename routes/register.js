@@ -17,8 +17,8 @@ router.post('/api/register',async(req,res)=>{
     var dbcheck=0;
 
     // Query Users in DB, check if userName exists 
-    const searchresponce = await userModel.find({ username:userName});
-    dbcheck = searchresponce.length;
+    const searchResponse = await userModel.find({ username:userName});
+    dbcheck = searchResponse.length;
 
     if(dbcheck >= 1)
         {
