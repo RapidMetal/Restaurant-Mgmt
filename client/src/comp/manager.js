@@ -87,7 +87,7 @@ function EmployeePerf(props) {
             <Typography className={classes.employeeTableValue}> {props.name} </Typography>
             <Typography className={classes.employeeTableValue}> {props.orderCount} </Typography>
             <Typography className={classes.employeeTableValue}> {props.tips} </Typography>
-            <Typography className={classes.employeeTableValue}> {props.rating} out of 5 </Typography>
+            <Typography className={classes.employeeTableValue}> {props.rating.toPrecision(3)} out of 5 </Typography>
         </div>
     )
 }
@@ -148,7 +148,7 @@ function ManagerPage(props) {
                             <Typography className={classes.rightColField}> <pre style={{ fontFamily: 'inherit' }}>No. of Orders:     {props.restaurantDetails.orderCount}</pre> </Typography>
                             <Typography className={classes.rightColField}> <pre style={{ fontFamily: 'inherit' }}>Total Revenue:   Rs. {props.restaurantDetails.revenue}</pre> </Typography>
                             <Typography className={classes.rightColField}> <pre style={{ fontFamily: 'inherit' }}>Tips Received:    Rs. {props.restaurantDetails.tips}</pre> </Typography>
-                            <Typography className={classes.rightColField}> <pre style={{ fontFamily: 'inherit' }}>Average rating:   {props.restaurantDetails.rating}/5 stars</pre> </Typography>
+                            <Typography className={classes.rightColField}> <pre style={{ fontFamily: 'inherit' }}>Average rating:   {props.restaurantDetails.rating.toPrecision(3)}/5 stars</pre> </Typography>
                         </div>
                     </Paper>
                 </Grid>

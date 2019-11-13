@@ -283,7 +283,8 @@ function EmployeePage(props) {
                 const newEmployeeDetails = {
                     tips: res.emp.tips,
                     rating: res.emp.rating,
-                    orderCount: res.emp.orderCount
+                    orderCount: res.emp.orderCount,
+                    totalPrice: totalPrice
                 };
                 props.actionUpdateEmployeeDetails(newEmployeeDetails);
             }
