@@ -81,6 +81,14 @@ const useStyles = makeStyles(theme => ({
         minWidth: '19%',
         marginRight: '1.2%',
     },
+    formRowSelect: {
+        minWidth: '19%',
+        marginRight: '1.2%',
+        color: '#fff'
+    },
+    formRowSelectBox: {
+        color: '#fff',
+    },
     formButton: {
         borderRadius: '50%',
         minWidth: '10px',
@@ -158,7 +166,8 @@ function FormItem(props) {
             <Select
                 value={props.item._id}
                 onChange={e => handleItemSelect(e)}
-                className={classes.formRowItem}
+                className={classes.formRowSelect}
+                classes={{ select: classes.formRowSelectBox }}
                 style={{ margin: '5px' }}
                 variant='outlined' >
                     { props.menu.map((dish,index) => (
@@ -170,7 +179,8 @@ function FormItem(props) {
             <Select
                 value={props.item.quantity}
                 onChange={e => handleQuantitySelect(e)}
-                className={classes.formRowItem}
+                className={classes.formRowSelect}
+                classes={{ select: classes.formRowSelectBox }}
                 style={{ marginTop: '5px', marginBottom: '5px' }}
                 variant='outlined' >
                     { quantityArray.map((qty,index) => (
@@ -210,8 +220,7 @@ function EmployeePage(props) {
             newItemPrice = newItemPrice + itemList[key].price * itemList[key].quantity;
         }
         setTotalPrice(newItemPrice);
-        //eslint-disable-next-line
-    }, []);
+    });
 
     const performLogout = () => {
         props.actionLogout();
@@ -318,6 +327,7 @@ function EmployeePage(props) {
                                     value={rating}
                                     onChange={e => setRating(e.target.value)}
                                     className={classes.ratingSelection}
+                                    classes={{ select: classes.formRowSelectBox }}
                                     style={{ marginTop: '5px', marginBottom: '5px' }}
                                     defaultValue={5} >
                                         { ratingArray.map((qty,index) => (
