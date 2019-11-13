@@ -262,7 +262,8 @@ function EmployeePage(props) {
             token: props.empId,
             order: itemList,
             rating: rating,
-            tip: Number.parseInt(orderTip)
+            tip: Number.parseInt(orderTip),
+            totalPrice: totalPrice
         };
 
         fetch('http://localhost:8125/api/placeOrder', {
@@ -283,8 +284,7 @@ function EmployeePage(props) {
                 const newEmployeeDetails = {
                     tips: res.emp.tips,
                     rating: res.emp.rating,
-                    orderCount: res.emp.orderCount,
-                    totalPrice: totalPrice
+                    orderCount: res.emp.orderCount
                 };
                 props.actionUpdateEmployeeDetails(newEmployeeDetails);
             }

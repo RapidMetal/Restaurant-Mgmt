@@ -17,13 +17,13 @@ const empModel = require('../db').empModel;
 const router = require('express').Router();
 
 router.post('/api/placeOrder', async (req,res) => {
-    console.log(req.body.order);
+    console.log(req.body);
     //Parse the Request
     const token = req.body.token;
     const reqorder = req.body.order;
     const rating = req.body.rating;
     const tip = req.body.tip;
-    const totalPrice = req.body.totalPrice;
+    const TotalPrice = req.body.totalPrice;
     //Update Employee
     var employee = await empModel.find({ user : token });
     employee[0].avgRating = (employee[0].avgRating * employee[0].orderCount + rating)/
@@ -52,7 +52,7 @@ router.post('/api/placeOrder', async (req,res) => {
         empId: token,
         date: new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''),
         list: orderlist,
-        totalPrice: totalPrice,
+        totalPrice: TotalPrice,
         tip: tip,
         rating: rating
     });
