@@ -1,6 +1,11 @@
 var mongoose = require('mongoose');
+var mongodb = "mongodb+srv://deadw0lf:pvGOR2620@cluster0-qwfan.gcp.mongodb.net/restaurant_mgmt?retryWrites=true&w=majority";
+mongoose.connect(mongodb, { useNewUrlParser: true, useUnifiedTopology: true });
+//Get the default connection
+var db = mongoose.connection;
 
-mongoose.connect('mongodb://localhost/testdatabase', { useNewUrlParser: true, useUnifiedTopology: true });
+//Bind connection to error event (to get notification of connection errors)
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 //Make User Schema
 var userSchema = new mongoose.Schema({
