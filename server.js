@@ -8,7 +8,7 @@ app.use(bp.json());
 app.use(cors());
 
 //Test comment
-app.listen(PORT, () => {
+app.listen(process.env.port || PORT, () => {
     console.log('Application listening on port: ' + PORT);
 });
 
