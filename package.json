@@ -1,7 +1,7 @@
 {
   "name": "restaurant-mgmt",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple restaurant manager",
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -18,10 +18,23 @@
     "type": "git",
     "url": "git+https://github.com/RapidMetal/Restaurant-Mgmt.git"
   },
-  "author": "",
+  "author": "pavan and kk",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/RapidMetal/Restaurant-Mgmt/issues"
   },
-  "homepage": "https://github.com/RapidMetal/Restaurant-Mgmt#readme"
+  "homepage": "https://github.com/RapidMetal/Restaurant-Mgmt#readme",
+  "keywords": [
+    "restaurant",
+    "heroku",
+    "mongodb",
+    "atlas"
+  ],
+  "engines": {
+    "node": "13.1.0"
+  },
+  "scripts": {
+  	"start": "node server.js"
+  }
+
 }
