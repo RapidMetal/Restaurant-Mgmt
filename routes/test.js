@@ -6,7 +6,7 @@ const listModel = require('../db').listModel;
 const orderModel = require('../db').orderModel;
 const empModel = require('../db').empModel;
 
-router.get('/api/test', async (req,res) => {
+router.get('https://obscure-mesa-77509.herokuapp.com/api/test', async (req,res) => {
     try {
         console.log("Test request received.");
         var newUser = new userModel({
@@ -62,7 +62,7 @@ router.get('/api/test', async (req,res) => {
     
 })
 
-router.post('/api/test2', (req,res) => {
+router.post('https://obscure-mesa-77509.herokuapp.com/api/test2', (req,res) => {
     console.log("Post received");
     console.log(req.body);
     const resObject = { res: "Fuck JS!"};

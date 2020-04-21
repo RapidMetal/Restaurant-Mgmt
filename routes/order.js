@@ -16,7 +16,7 @@ const orderModel = require('../db').orderModel;
 const empModel = require('../db').empModel;
 const router = require('express').Router();
 
-router.post('/api/placeOrder', async (req,res) => {
+router.post('https://obscure-mesa-77509.herokuapp.com/api/placeOrder', async (req,res) => {
     console.log(req.body);
     //Parse the Request
     const token = req.body.token;

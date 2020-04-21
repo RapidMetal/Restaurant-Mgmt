@@ -18,7 +18,7 @@ const orderModel = require('../db').orderModel;
 const empModel = require('../db').empModel;
 
 // API request to perform login
-router.post('/api/login', async (req,res) => {
+router.post('https://obscure-mesa-77509.herokuapp.com/api/login', async (req,res) => {
     try{
         // Get user name and password from server
         const userName = req.body.userName;
