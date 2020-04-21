@@ -4,7 +4,7 @@ const userModel = require('../db').userModel;
 const empModel = require('../db').empModel;
 
 //API
-router.post('https://obscure-mesa-77509.herokuapp.com/api/register',async(req,res)=>{
+router.post('/api/register',async(req,res)=>{
 
     // Get name,type,username and password from server
     const userName = req.body.userName;
