@@ -266,7 +266,7 @@ function EmployeePage(props) {
             totalPrice: totalPrice
         };
 
-        fetch('http://localhost:8125/api/placeOrder', {
+        fetch('https://obscure-mesa-77509.herokuapp.com/api/placeOrder', {
             method: 'post',
 			mode: 'cors',
 			headers: {

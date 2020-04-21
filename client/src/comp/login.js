@@ -139,7 +139,7 @@ function LoginPage(props) {
 			userPass: passField
 		}
 		//props.history.push('/emp');
-		fetch('http://localhost:8125/api/login', {
+		fetch('https://obscure-mesa-77509.herokuapp.com/api/login', {
 			method: 'post',
 			mode: 'cors',
 			headers: {
@@ -217,7 +217,7 @@ function LoginPage(props) {
 			userPass: passField,
 			admin: isManager
 		}
-		fetch('http://localhost:8125/api/register', {
+		fetch('https://obscure-mesa-77509.herokuapp.com/api/register', {
 			method: 'post',
 			mode: 'cors',
 			headers: {
